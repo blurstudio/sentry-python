@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 import logging
-import datetime
 
 from sentry_sdk.hub import Hub
 from sentry_sdk.utils import (
@@ -79,7 +78,7 @@ def _breadcrumb_from_record(record):
         "level": _logging_to_event_level(record.levelname),
         "category": record.name,
         "message": record.message,
-        "timestamp": datetime.datetime.fromtimestamp(record.created),
+        "timestamp": record.created,
         "data": _extra_from_record(record),
     }
 
